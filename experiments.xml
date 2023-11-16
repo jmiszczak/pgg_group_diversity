@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE experiments SYSTEM "behaviorspace.dtd">
+<experiments>
+
+  <!-- 
+    Definitions of experiments for investigating the impact of roaming on the public goods game.
+    This file should be used with NetLogo model: cooperation_spatial_diversity.nlogo
+  -->
+  
+  <!-- randomized von Neumann and Moore neighborhoods, with roaming -->
+  <experiment name="random-local-roaming" repetitions="100" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.05" last="1.0"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random von Neumann&quot;"/>
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+
+    <!-- randomized von Neumann and Moore neighborhoods, with roaming -->
+  <experiment name="random-local-roaming-differences" repetitions="100" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.05" last="1.0"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random von Neumann&quot;"/>
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;differences&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+
+  <!-- randomized neighborhoods with fixed number of neighbors from the full population, with roaming -->
+
+  <experiment name="roaming-patches" repetitions="50" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.1" last="0.8"/>
+    <steppedValueSet variable="random-patches-number" first="3" step="1" last="8"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6.5"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random K patches&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+  
+  <!-- randomized neighborhoods with fixed max neighbors, with roaming -->
+  <!-- small version for testing minimum of roaming participation -->
+  
+  <experiment name="roaming-random-patches-l16" repetitions="150" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.01" last="0.4"/>
+    <steppedValueSet variable="random-patches-number" first="4" step="1" last="11"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="3" step="0.1" last="8"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random K patches&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="16"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+  
+  <!-- medium version -->
+  <experiment name="min-roaming-random-patches-l32" repetitions="50" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.01" last="0.4"/>
+    <steppedValueSet variable="random-patches-number" first="4" step="2" last="10"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="3" step="0.1" last="8"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random K patches&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="32"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+
+  <!-- large version, even K only -->
+  <experiment name="min-roaming-random-patches-l64-even" repetitions="50" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.01" last="0.4"/>
+    <steppedValueSet variable="random-patches-number" first="4" step="2" last="14"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="3" step="0.1" last="8"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random patches&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+
+</experiments>
