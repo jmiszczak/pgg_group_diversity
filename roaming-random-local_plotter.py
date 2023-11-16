@@ -20,20 +20,20 @@ mpl.rc('font', size=9)
 # name of the resulting file
 plot_name = 'roaming-random-local'
 
-# experiemetns used for the plots
+# experiements used for the plots
 exps = [
   'roaming-random-local-l64',
   'roaming-random-local-differences-l64'
   ]
 
 # variables usd in the plots
-
 v = ["neighborhood-type", "roaming-agents", "synergy-factor", "mean-cooperators1k"]
 
 # raw data and preprocessed data
 data = dict()
 df = dict()
 
+# data preprocessing
 for exp_desc in exps:
 
   # file with data from the experiment
@@ -57,7 +57,7 @@ for exp_desc in exps:
                   data[exp_desc][(data[exp_desc][v[0]] == v0) & (data[exp_desc][v[1]] == v1) & (data[exp_desc][v[2]] == v2)]['mean-cooperators1k'].mean()
               ]
 
-#%% plot 
+#%% plot
 
 # levels and colors for the contour plots
 levels = [0,0.1,0.5,0.75,0.9,0.95,0.98, 1]
@@ -69,7 +69,7 @@ for j, exp_desc in enumerate(exps):
   plot_data = dict()
 
   # one figure for all cases of v0
-  fig = figure.Figure(figsize=(6, 2.5), dpi=150)
+  fig = figure.Figure(figsize=(6, 2.6), dpi=150)
   for i, v0 in enumerate(var0s):
     # Note: 1*2 is the number of cases for var0s 
     axs = fig.add_subplot(121+i);
@@ -104,11 +104,10 @@ for j, exp_desc in enumerate(exps):
     axs.yaxis.set_minor_locator(AutoMinorLocator(n=5))
     axs.xaxis.set_minor_locator(AutoMinorLocator(n=4))
   
-    #
+    # take car of the labels
     if i in [0,2,4]:
       axs.set_ylabel(r'synergy factor $r$')
     
-    # if i in [4,5]:
     axs.set_xlabel(r'roaming agents participation $\delta$')
         
     if i not in [0,2,4]:
@@ -116,12 +115,11 @@ for j, exp_desc in enumerate(exps):
     
     # final touches
     axs.set_title(str(v0))
-    axs.grid(True, which='major',linestyle='-.', linewidth=0.25, c='k', alpha=0.75)
-    
+    axs.grid(True, which='major',linestyle='-.', linewidth=0.25, c='k', alpha=0.75) 
   
   # attach the color bar to the first plot
   if j == 0:
-    cbar_ax = fig.add_axes([0.125, 1.05, 0.8, 0.025])
+    cbar_ax = fig.add_axes([0.125, 1.05, 0.8, 0.04])
     cbar = fig.colorbar(im, cax=cbar_ax, orientation="horizontal")
     cbar.set_ticklabels([str(l) for l in levels])
       
