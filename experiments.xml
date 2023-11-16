@@ -7,8 +7,11 @@
     This file should be used with NetLogo model: cooperation_spatial_diversity.nlogo
   -->
   
+  <!-- Experiments for the local version -->
+  
   <!-- randomized von Neumann and Moore neighborhoods, with roaming -->
-  <experiment name="random-local-roaming" repetitions="100" runMetricsEveryStep="false">
+  <!-- version for testing -->
+  <experiment name="roaming-random-local-l16" repetitions="25" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="2048"/>
@@ -30,8 +33,31 @@
     </enumeratedValueSet>
   </experiment>
 
-    <!-- randomized von Neumann and Moore neighborhoods, with roaming -->
-  <experiment name="random-local-roaming-differences" repetitions="100" runMetricsEveryStep="false">
+  <!-- version with L=64 and 100 realizations -->
+  <experiment name="roaming-random-local-l64" repetitions="100" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.05" last="1.0"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random von Neumann&quot;"/>
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+
+  <!-- version with L=64 and 100 realizations, imitation based on differences -->
+  <experiment name="roaming-random-local-differences-l64" repetitions="100" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="2048"/>
@@ -53,33 +79,11 @@
     </enumeratedValueSet>
   </experiment>
 
-  <!-- randomized neighborhoods with fixed number of neighbors from the full population, with roaming -->
 
-  <experiment name="roaming-patches" repetitions="50" runMetricsEveryStep="false">
-    <setup>setup</setup>
-    <go>go</go>
-    <timeLimit steps="2048"/>
-    <metric>mean-cooperators1k</metric>
-    <steppedValueSet variable="roaming-agents" first="0" step="0.1" last="0.8"/>
-    <steppedValueSet variable="random-patches-number" first="3" step="1" last="8"/>
-    <enumeratedValueSet variable="noise-factor">
-      <value value="0.5"/>
-    </enumeratedValueSet>
-    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6.5"/>
-    <enumeratedValueSet variable="neighborhood-type">
-      <value value="&quot;random K patches&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="world-size">
-      <value value="64"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
-    </enumeratedValueSet>
-  </experiment>
+  <!-- Experiments for the global version -->
+  <!-- fixed max of random neighbors from the full population (random K patches), with roaming -->
   
-  <!-- randomized neighborhoods with fixed max neighbors, with roaming -->
-  <!-- small version for testing minimum of roaming participation -->
-  
+  <!-- small version: 150 realizations, L=16, K=4,5,...,11 -->
   <experiment name="roaming-random-patches-l16" repetitions="150" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
@@ -102,8 +106,8 @@
     </enumeratedValueSet>
   </experiment>
   
-  <!-- medium version -->
-  <experiment name="min-roaming-random-patches-l32" repetitions="50" runMetricsEveryStep="false">
+  <!-- medium version: L=32, K=4,6,...,10 -->
+  <experiment name="roaming-random-patches-l32-even" repetitions="50" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="2048"/>
@@ -125,8 +129,8 @@
     </enumeratedValueSet>
   </experiment>
 
-  <!-- large version, even K only -->
-  <experiment name="min-roaming-random-patches-l64-even" repetitions="50" runMetricsEveryStep="false">
+  <!-- large version: L=64, K=4,6,....,14 -->
+  <experiment name="roaming-random-patches-l64-even" repetitions="50" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="2048"/>
