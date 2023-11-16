@@ -15,10 +15,16 @@ mpl.rc('text', usetex=True)
 mpl.rc('font', family='serif')
 mpl.rc('font', size=8)
 
-# %% data loading and initial calculations
+# %% some fixed parameters, data loading and initial calculations
+# name of the resulting file
 plot_name = 'min-roaming-random-patches'
+
 # experiemetns used for the plots
-exps = ['roaming-random-patches-l16','roaming-random-patches-l32-even', 'roaming-random-patches-l64-even']
+exps = [
+  'roaming-random-patches-l16',
+  'roaming-random-patches-l32-even',
+  'roaming-random-patches-l64-even']
+
 exps_var0s = {
   'roaming-random-patches-l16' : range(4,11),
   'roaming-random-patches-l32-even': [4,6,8,10],
@@ -31,7 +37,7 @@ exps_world_size = {
   'roaming-random-patches-l64-even' : 64
   }
 
-# raw and preprocessed data
+# raw data and preprocessed data
 data = dict()
 df = dict()
 
@@ -62,20 +68,12 @@ for exp_desc in exps:
                   v1,
                   v2,
                   data[exp_desc][(data[exp_desc][v[0]] == v0) & (data[exp_desc][v[1]] == v1) & (data[exp_desc][v[2]] == v2)]['mean-cooperators1k'].mean()
-              ]
-  
-  
+              ]  
   
   
 #%% min delta
 thr1 = 0.90
 thr2 = 0.98
-
-exps_world_size = {
-  'roaming-random-patches-l16' : 16,
-  'roaming-random-patches-l32-even': 32,
-  'roaming-random-patches-l64-even' : 64
-  }
 
 fig = figure.Figure(figsize=(6.5,2.5),dpi=200)
 
@@ -88,8 +86,7 @@ for i, exp_desc in enumerate(exps):
   data_max1 = dict()
   data_max2 = dict()
   pm = lambda x : '-' if x < a else '+'
-  
-  
+   
   for k in var0s:
       data_md[k] = df[exp_desc][df[exp_desc][v[0]] == k][[v[1], v[2], v[3]]]
                                   
@@ -100,12 +97,10 @@ for i, exp_desc in enumerate(exps):
   
   min_delta1 = [min(data_max1[x][data_max1[x]['synergy-factor'] == min(data_max1[x]['synergy-factor'])]['roaming-agents'])  for x in var0s]
   min_delta2 = [min(data_max2[x][data_max1[x]['synergy-factor'] == min(data_max2[x]['synergy-factor'])]['roaming-agents'])  for x in var0s]
- 
-  
+   
   # thr1
   axs.plot(var0s, min_delta1, 'x', color='steelblue', label=r'$\geq$ {}\%'.format(100*thr1))
   a, b = np.polyfit(var0s, min_delta1, 1)
-
   
   axs.plot(var0s, a*var0s+b, '--', color='steelblue', lw=0.75)
   
@@ -125,19 +120,20 @@ for i, exp_desc in enumerate(exps):
            rotation=np.rad2deg(np.arctan(a)), rotation_mode='anchor',
                 transform_rotates_text=True)
 
+  # final settings
   axs.grid(True, linestyle=':', linewidth=0.5, c='k')
   axs.set_xlabel(r'$K$')
-  
   axs.set_title(r"$L="+ str(exps_world_size[exp_desc]) + "$")
-  
+
+  # tick and labels depend on the position of the plot  
   if i == 0:
     axs.set_ylabel(r'optimal $\delta$')
   if i != 0:
     axs.set_yticklabels([])
-  
+
+# saving the result
 fig.tight_layout()
 display(fig)
-plot_name = 'min-roaming-random-patches'
 fName = "plots/plot_" + plot_name + "-min_delta.pdf"
 print("[INFO] Saving " + fName)
 fig.savefig(fName, format="pdf", bbox_inches='tight')
