@@ -10,6 +10,9 @@ modelFile=cooperation_spatial_diversity.nlogo
 # set the file with experiment definitions
 expFile=experiments.xml
 
+#make sure that the output directory exists
+mkdir -p data
+
 # print some information
 echo "[INFO] Running experiment: " $expName
 echo -n "[INFO] Start time: "
