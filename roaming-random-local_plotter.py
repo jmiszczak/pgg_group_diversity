@@ -128,7 +128,7 @@ for j, exp_desc in enumerate(exps):
   display(fig)
   
   # saving
-  fName = "plots/plot_" + exp_desc + ".pdf"
+  fName = "final_plots/plot_" + exp_desc + ".pdf"
   print("[INFO] Saving " + fName)
   fig.savefig(fName, format="pdf", bbox_inches='tight')
 
