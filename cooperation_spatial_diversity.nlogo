@@ -126,13 +126,57 @@ to setup-patches
     ;; assign roaming status to a subpopulation
     ifelse random-float 1.0 < roaming-agents [
       set roaming? true ;; agent changing the neighbours
-      set plabel "*"
+        sprout 1 [
+        set color white
+        set shape "x"
+        ;;stamp
+        die
+      ]
+
     ] [
       set roaming? false ;; no reevaluation
     ]
 
+    make-grid
     update-colors
+
   ]
+end
+
+to export-example-views-rvn
+  set world-size 16
+  set neighborhood-type "random von Neumann"
+  set synergy-factor 3.65
+  set roaming-agents 0
+    repeat 4 [
+      setup
+    repeat 5 [
+      repeat 2048 [ go ]
+      export-view word (word "/home/jam/Desktop/screens/pgg-sd-rvn-365-" (word roaming-agents "-") ticks ) ".png"
+    ]
+    set roaming-agents  (precision (roaming-agents + 0.1) 1)
+    show roaming-agents
+    ]
+
+
+end
+
+to export-example-views-rm
+  set world-size 64
+  set neighborhood-type "random Moore"
+  set synergy-factor 4.5
+  set roaming-agents 0
+    repeat 4 [
+      setup
+    repeat 5 [
+      repeat 2048 [ go ]
+      export-view word (word "/home/jam/Desktop/screens/pgg-sd-rm-45-" (word roaming-agents "-") ticks ) ".png"
+    ]
+    set roaming-agents  (precision (roaming-agents + 0.1) 1)
+    show roaming-agents
+    ]
+
+
 end
 
 ;;------------------------------------------------------------------------------------
@@ -171,10 +215,23 @@ end
 ;; helper function to update visual aspects of turtles
 ;;------------------------------------------------------------------------------------
 to update-colors
+
   ifelse contribution = 1 [
     set pcolor green
   ][
-    set pcolor black
+    set pcolor gray
+  ]
+end
+
+;;
+;; grid making based on https://stackoverflow.com/a/76466585
+;;
+to make-grid
+  sprout 1 [
+    set color black
+    set shape "square-outline"
+    stamp
+    die
   ]
 end
 
@@ -349,7 +406,7 @@ CHOOSER
 neighborhood-type
 neighborhood-type
 "von Neumann" "Moore" "von Neumann or Moore" "random von Neumann" "random Moore" "random von Neumann or Moore" "K patches" "random K patches"
-0
+4
 
 BUTTON
 117
@@ -357,8 +414,8 @@ BUTTON
 201
 102
 Go
-go
-T
+repeat 1024 [ go ]
+NIL
 1
 T
 OBSERVER
@@ -473,7 +530,7 @@ roaming-agents
 roaming-agents
 0
 1
-0.3
+0.2
 0.05
 1
 NIL
@@ -765,6 +822,12 @@ false
 0
 Rectangle -7500403 true true 30 30 270 270
 Rectangle -16777216 true false 60 60 240 240
+
+square-outline
+false
+0
+Polygon -7500403 true true 0 165 15 165 15 15 285 15 285 165 300 165 300 0 0 0 0 165
+Polygon -7500403 true true 285 135 300 135 300 300 0 300 0 135 15 135 15 285 285 285
 
 star
 false
