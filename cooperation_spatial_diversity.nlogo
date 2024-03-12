@@ -54,27 +54,22 @@ to go
     ]
   ]
 
-  ;; play the public goods game for all patches
-  ask patches [
-    play-pgg
-  ]
-
-  ;; imitate the strategy using the seleced policy, using the cumulative income from the round
-  ask patches [
-
-    ;; strategy imitation method
-    (ifelse  imitation-policy = "fermi-dirac" [
-      imitate-strategy-fermi-dirac
-    ] imitation-policy = "linear" [
-      imitate-strategy-linear
-    ] imitation-policy = "differences" [
-      imitate-strategy-differences
-    ])
-
-    ;; update colors of the visual representation - NOTE: this could be commented out
-    update-colors
-    ;; reset the income for the next round
-    set income 0
+  ifelse sync [
+    ;; play the public goods game for all patches
+    ask patches [
+      play-pgg
+    ]
+    ;; imitate the strategy using the seleced policy, using the cumulative income from the round
+    ask patches [
+      imitate
+    ]
+  ][
+    ask patches [
+      ;; play the public goods game for all patches
+      play-pgg
+      ;; imitate the strategy using the seleced policy, using the cumulative income from the round
+      imitate
+    ]
   ]
 
   ;; update the list with cooperators-fraction
@@ -253,6 +248,22 @@ to play-pgg
 
 end
 
+to imitate
+  ;; strategy imitation method
+  (ifelse  imitation-policy = "fermi-dirac" [
+    imitate-strategy-fermi-dirac
+  ] imitation-policy = "linear" [
+    imitate-strategy-linear
+  ] imitation-policy = "differences" [
+    imitate-strategy-differences
+  ])
+
+  ;; update colors of the visual representation - NOTE: this could be commented out
+  update-colors
+  ;; reset the income for the next round
+  set income 0
+end
+
 ;;------------------------------------------------------------------------------------
 ;; strategy update policies
 ;;------------------------------------------------------------------------------------
@@ -399,10 +410,10 @@ NIL
 1
 
 CHOOSER
-11
-207
-202
-252
+12
+242
+203
+287
 neighborhood-type
 neighborhood-type
 "von Neumann" "Moore" "von Neumann or Moore" "random von Neumann" "random Moore" "random von Neumann or Moore" "K patches" "random K patches"
@@ -445,10 +456,10 @@ PENS
 "pen-1" 1.0 0 -7500403 true "" "plot mean-cooperators1k"
 
 SLIDER
-12
-162
-202
-195
+13
+197
+203
+230
 synergy-factor
 synergy-factor
 0
@@ -460,10 +471,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-12
-115
-201
-148
+11
+153
+200
+186
 noise-factor
 noise-factor
 0.25
@@ -497,20 +508,20 @@ cooperators-fraction
 11
 
 CHOOSER
-10
-307
-204
-352
+11
+342
+205
+387
 imitation-policy
 imitation-policy
 "fermi-dirac" "linear" "differences"
 0
 
 SLIDER
-10
-262
-202
-295
+11
+297
+203
+330
 random-patches-number
 random-patches-number
 2
@@ -522,10 +533,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-11
-362
-205
-395
+12
+397
+206
+430
 roaming-agents
 roaming-agents
 0
@@ -535,6 +546,17 @@ roaming-agents
 1
 NIL
 HORIZONTAL
+
+SWITCH
+14
+111
+198
+144
+sync
+sync
+0
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -915,7 +937,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.3.0
+NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
