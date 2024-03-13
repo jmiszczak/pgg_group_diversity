@@ -988,6 +988,64 @@ NetLogo 6.4.0
       <value value="&quot;differences&quot;"/>
     </enumeratedValueSet>
   </experiment>
+  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count turtles</metric>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patches-number">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sync">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="synergy-factor">
+      <value value="4.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="roaming-agents">
+      <value value="0.2"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="test-async" repetitions="1" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count turtles</metric>
+    <enumeratedValueSet variable="roaming-agents">
+      <value value="0.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patches-number">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sync">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="synergy-factor">
+      <value value="4.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
 </experiments>
 @#$#@#$#@
 @#$#@#$#@
