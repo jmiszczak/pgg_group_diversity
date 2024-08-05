@@ -80,6 +80,34 @@
   </experiment>
 
 
+  <!-- version with L=64 and 100 realizations, imitation based on differences, async -->
+  <experiment name="roaming-random-local-differences-l64-async" repetitions="100" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.05" last="1.0"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random von Neumann&quot;"/>
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;differences&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sync">
+	    <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+
+
+
   <!-- Experiments for the global version -->
   <!-- fixed max of random neighbors from the full population (random K patches), with roaming -->
   
@@ -203,6 +231,32 @@
 
   </experiment>
 
+  <!-- version with L=64 and 100 realizations, asynchronous -->
+  <experiment name="roaming-random-local-l64-async" repetitions="100" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="2048"/>
+    <metric>mean-cooperators1k</metric>
+    <steppedValueSet variable="roaming-agents" first="0" step="0.05" last="1.0"/>
+    <enumeratedValueSet variable="noise-factor">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="synergy-factor" first="2.5" step="0.1" last="6"/>
+    <enumeratedValueSet variable="neighborhood-type">
+      <value value="&quot;random von Neumann&quot;"/>
+      <value value="&quot;random Moore&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="world-size">
+      <value value="64"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="imitation-policy">
+      <value value="&quot;fermi-dirac&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sync">
+      <value value="false"/>
+    </enumeratedValueSet>
+
+  </experiment>
 
 
 
