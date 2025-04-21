@@ -464,7 +464,7 @@ synergy-factor
 synergy-factor
 0
 16
-4.5
+6.75
 0.05
 1
 NIL
@@ -541,7 +541,7 @@ roaming-agents
 roaming-agents
 0
 1
-0.2
+0.45
 0.05
 1
 NIL
@@ -554,7 +554,7 @@ SWITCH
 144
 sync
 sync
-0
+1
 1
 -1000
 
