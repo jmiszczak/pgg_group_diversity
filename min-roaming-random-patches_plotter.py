@@ -134,6 +134,6 @@ for i, exp_desc in enumerate(exps):
 # saving the result
 fig.tight_layout()
 display(fig)
-fName = "final_plots/plot_" + plot_name + "-min_delta.pdf"
+fName = "plots/plot_" + plot_name + "-min_delta.pdf"
 print("[INFO] Saving " + fName)
 fig.savefig(fName, format="pdf", bbox_inches='tight')

@@ -23,7 +23,7 @@ mpl.rc('font', size=8)
 #exp_desc = 'roaming-patches-l32-even'
 
 #exp_desc = 'roaming-random-patches-l64-even'
-exp_desc = 'roaming-random-patches-l64-even'
+exp_desc = 'roaming-patches-l32-even'
 
 exp_files = glob.glob(os.path.join('data/' , exp_desc + "*.csv"))
 
@@ -60,6 +60,7 @@ for v0 in var0s:
 
 
 #%% plot 
+#var0s = np.array([4,6,8,10])
 var0s = np.array([4,6,8,10])
 # levels and colors for the contour plots
 levels = [0, 0.001, 0.2, 0.5, 0.75, 0.9, 0.95, 0.98, 1]
