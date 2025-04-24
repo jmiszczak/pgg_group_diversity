@@ -22,7 +22,8 @@ mpl.rc('font', size=8)
 # name of the resulting file and the experiment name
 #exp_desc = 'roaming-patches-l32-even'
 
-exp_desc = 'roaming-patches-l32-even'
+#exp_desc = 'roaming-random-patches-l64-even'
+exp_desc = 'roaming-random-patches-l64-even'
 
 exp_files = glob.glob(os.path.join('data/' , exp_desc + "*.csv"))
 
@@ -60,19 +61,18 @@ for v0 in var0s:
 
 #%% plot 
 var0s = np.array([4,6,8,10])
-levels = [0, 0.1, 0.5, 0.75, 0.9, 0.95, 0.98, 1]
-
-plotColors = ['orange', 'red', 
-              'tomato', 'yellow', 
-              'palegreen', 'lightblue', 
-              'white']
+# levels and colors for the contour plots
+levels = [0, 0.001, 0.2, 0.5, 0.75, 0.9, 0.95, 0.98, 1]
+plotColors = ['yellow', 'orange',  'red', 'tomato',
+              'olive', 'palegreen', 'lightblue', 'white']
 cmap, norm = colors.from_levels_and_colors(levels, plotColors)
+
 
 # contained for plotted data
 plot_data = dict()
 
 # one figure for all cases of v0
-fig = figure.Figure(figsize=(6,5))
+fig = figure.Figure(figsize=(5,4))
 
 # Note: this dependes on the desired results
 k_vals = [4,6]
@@ -113,10 +113,10 @@ for i, v0 in enumerate(k_vals):
 
   
   if i in [len(k_vals)-1,len(k_vals)-2]:
-    axs.set_xlabel(r'roaming agents participation $\delta$')
+    axs.set_xlabel(r'roaming agents fraction $\delta$')
 
-  if i not in [2,3,4,5,6]:  
-    axs.set_xticklabels([])
+#  if i not in [2,3,4,5,6]:  
+#    axs.set_xticklabels([])
   
   axs.yaxis.set_minor_locator(AutoMinorLocator(n=5))
   axs.xaxis.set_minor_locator(AutoMinorLocator(n=4))
@@ -132,6 +132,6 @@ fig.tight_layout()
 display(fig)
 
 # %% saving
-fName = "final_plots/plot_" + exp_desc + ".pdf"
+fName = "plots/plot_" + exp_desc + ".pdf"
 print("[INFO] Saving " + fName)
 fig.savefig(fName, format="pdf", bbox_inches='tight')

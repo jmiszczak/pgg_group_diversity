@@ -3,6 +3,8 @@
 # %% initial imports
 import pandas as pd
 import numpy as np
+import os
+import glob
 
 import matplotlib as mpl
 import matplotlib.figure as figure
@@ -23,8 +25,10 @@ plot_name = 'roaming-random-local'
 # experiements used for the plots
 exps = [
   'roaming-random-local-l64',
+  'roaming-random-local-l64-async',
   'roaming-random-local-differences-l64'
   ]
+
 
 # variables usd in the plots
 v = ["neighborhood-type", "roaming-agents", "synergy-factor", "mean-cooperators1k"]
@@ -38,7 +42,10 @@ for exp_desc in exps:
 
   # file with data from the experiment
   # Note: header=6 is for NetLogo data
-
+  
+  
+# exp_files = [exp_desc, exp_desc + '-batch2',  exp_desc + '-batch3' ]
+  print ('data/' + exp_desc + '.csv')
   data[exp_desc] = pd.read_csv('data/' + exp_desc + '.csv', header=6)
   
   # data fram used for plots
@@ -60,16 +67,16 @@ for exp_desc in exps:
 #%% plot
 
 # levels and colors for the contour plots
-levels = [0,0.1,0.5,0.75,0.9,0.95,0.98, 1]
-plotColors = ['orange',  'red', 'tomato',
-              'yellow', 'palegreen', 'lightblue', 'white']
+levels = [0, 0.001, 0.2, 0.5, 0.75, 0.9, 0.95, 0.98, 1]
+plotColors = ['yellow', 'orange',  'red', 'tomato',
+              'olive', 'palegreen', 'lightblue', 'white']
 cmap, norm = colors.from_levels_and_colors(levels, plotColors)
 
 for j, exp_desc in enumerate(exps):
   plot_data = dict()
 
   # one figure for all cases of v0
-  fig = figure.Figure(figsize=(6, 2.6), dpi=150)
+  fig = figure.Figure(figsize=(5, 2), dpi=150)
   for i, v0 in enumerate(var0s):
     # Note: 1*2 is the number of cases for var0s 
     axs = fig.add_subplot(121+i);
@@ -108,17 +115,18 @@ for j, exp_desc in enumerate(exps):
     if i in [0,2,4]:
       axs.set_ylabel(r'synergy factor $r$')
     
-    axs.set_xlabel(r'roaming agents participation $\delta$')
+    axs.set_xlabel(r'roaming agents fraction $\delta$')
         
     if i not in [0,2,4]:
         axs.set_yticklabels([])
     
     # final touches
-    axs.set_title(str(v0))
+    axs.set_title(str(v0), size=8)
     axs.grid(True, which='major',linestyle='-.', linewidth=0.25, c='k', alpha=0.75) 
   
-  # attach the color bar to the first plot
+  # attach the title and the color bar to the first plot
   if j == 0:
+    
     cbar_ax = fig.add_axes([0.125, 1.05, 0.8, 0.04])
     cbar = fig.colorbar(im, cax=cbar_ax, orientation="horizontal")
     cbar.set_ticklabels([str(l) for l in levels])
@@ -128,7 +136,7 @@ for j, exp_desc in enumerate(exps):
   display(fig)
   
   # saving
-  fName = "final_plots/plot_" + exp_desc + ".pdf"
+  fName = "plots/plot_" + exp_desc + ".pdf"
   print("[INFO] Saving " + fName)
   fig.savefig(fName, format="pdf", bbox_inches='tight')
 
