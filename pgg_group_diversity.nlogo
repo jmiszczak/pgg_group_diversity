@@ -250,8 +250,8 @@ end
 
 to imitate
   ;; strategy imitation method
-  (ifelse  imitation-policy = "fermi-dirac" [
-    imitate-strategy-fermi-dirac
+  (ifelse  imitation-policy = "fermi" [
+    imitate-strategy-fermi
   ] imitation-policy = "linear" [
     imitate-strategy-linear
   ] imitation-policy = "differences" [
@@ -269,14 +269,14 @@ end
 ;;------------------------------------------------------------------------------------
 
 ;;------------------------------------------------------------------------------------
-;; version with F-D function
+;; version with Fermi function
 ;;------------------------------------------------------------------------------------
-to imitate-strategy-fermi-dirac
+to imitate-strategy-fermi
   ;; select one of the neighbors
   let my-neighbor one-of neighborhood
   let my-neighbor-income [ income ] of my-neighbor
 
-  ;; select new strategy using Fermi-Dirac function
+  ;; select new strategy using Fermi function
   if ( random-float 1.0 ) * (1 + exp ( ( income - my-neighbor-income  ) * inv-noise-factor  ) ) < 1 [
     set contribution [ contribution ] of my-neighbor
   ]
@@ -514,7 +514,7 @@ CHOOSER
 387
 imitation-policy
 imitation-policy
-"fermi-dirac" "linear" "differences"
+"fermi" "linear" "differences"
 0
 
 SLIDER
@@ -585,11 +585,11 @@ The second aspect is used to introduce the possibility of reevaluation of the in
 The parameters for controlling the model are:
 
   * slider *world-size* - used to set the size of the grid;
-  * slider *noise-factor* - controlling of the noise parameter used in the Fermi-Dirac imitation function;
+  * slider *noise-factor* - controlling of the noise parameter used in the Fermi imitation function;
   * slider *synergy-factor* - controlling the synergy factor used in the payoff calculation in each elementary PGG;
   * chooser *neighborhood-type* - used to select the type of the neighbourhood assigned to each agent; 
   * slider *random-patches-number* - controlling the size of the interaction neighbourhood selected for *neighborhood-type* set to *K patches* or *random K patches*;
-  * chooser *imitation-policy* - used to control the function used in the imitation phase; can be set to: *Fermi-Dirac*, *differences* or *linear*;
+  * chooser *imitation-policy* - used to control the function used in the imitation phase; can be set to: *Fermi*, *differences* or *linear*;
   * slider *roaming-agents* - used to control the fraction of agents who are roaming, i.e. they can change their interaction neighbourhoods;
 
 ## THINGS TO NOTICE

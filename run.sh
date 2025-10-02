@@ -5,7 +5,7 @@ expName=${expName/./}
 expName=${expName/\//}
 
 # set the file contain the model 
-modelFile=cooperation_spatial_diversity.nlogo
+modelFile=pgg_group_diversity.nlogo
 
 # set the file with experiment definitions
 expFile=experiments.xml
@@ -19,9 +19,9 @@ echo -n "[INFO] Start time: "
 date +"%d/%m - %H:%M"
 
 # run NetLogo in the headless mode
-# use 16 threads by default
+# use 6 threads by default
 # save results using table format
-netlogo-headless.sh --threads 16 \
+netlogo-headless.sh --threads 6 \
   --model $modelFile \
   --setup-file $expFile \
   --table data/$expName.csv \

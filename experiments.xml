@@ -29,7 +29,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
 
@@ -52,7 +52,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
 
@@ -130,7 +130,7 @@
       <value value="16"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
   
@@ -153,7 +153,7 @@
       <value value="32"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
 
@@ -176,7 +176,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
 
@@ -199,7 +199,7 @@
       <value value="32"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
   </experiment>
 
@@ -223,7 +223,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="sync">
       <value value="false"/>
@@ -250,7 +250,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="sync">
       <value value="false"/>
@@ -277,7 +277,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="sync">
       <value value="false"/>
@@ -303,7 +303,7 @@
       <value value="64"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="imitation-policy">
-      <value value="&quot;fermi-dirac&quot;"/>
+      <value value="&quot;fermi&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="sync">
       <value value="false"/>
