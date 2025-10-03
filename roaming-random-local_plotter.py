@@ -30,7 +30,7 @@ exps = [
   ]
 
 
-# variables usd in the plots
+# variables used in the plots
 v = ["neighborhood-type", "roaming-agents", "synergy-factor", "mean-cooperators1k"]
 
 # raw data and preprocessed data
