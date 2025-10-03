@@ -417,7 +417,7 @@ CHOOSER
 neighborhood-type
 neighborhood-type
 "von Neumann" "Moore" "von Neumann or Moore" "random von Neumann" "random Moore" "random von Neumann or Moore" "K patches" "random K patches"
-4
+7
 
 BUTTON
 117
@@ -425,7 +425,7 @@ BUTTON
 201
 102
 Go
-repeat 1024 [ go ]
+repeat 32768 [ go ]
 NIL
 1
 T
@@ -439,8 +439,8 @@ NIL
 PLOT
 642
 12
-895
-270
+1066
+421
 Cooperation factor
 time step
 fraction of cooperators
@@ -464,7 +464,7 @@ synergy-factor
 synergy-factor
 0
 16
-6.75
+6.0
 0.05
 1
 NIL
@@ -487,9 +487,9 @@ HORIZONTAL
 
 MONITOR
 646
-346
+502
 895
-391
+547
 NIL
 mean-cooperators1k
 3
@@ -497,10 +497,10 @@ mean-cooperators1k
 11
 
 MONITOR
-645
-285
-895
-330
+644
+437
+894
+482
 cooperators fraction
 cooperators-fraction
 4
@@ -526,7 +526,7 @@ random-patches-number
 random-patches-number
 2
 16
-5.0
+6.0
 1
 1
 NIL
@@ -541,7 +541,7 @@ roaming-agents
 roaming-agents
 0
 1
-0.45
+0.1
 0.05
 1
 NIL
@@ -554,7 +554,7 @@ SWITCH
 144
 sync
 sync
-1
+0
 1
 -1000
 
