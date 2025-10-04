@@ -32,7 +32,7 @@ exp_files = glob.glob(os.path.join('data/' , exp_desc + "*.csv"))
 
 # data loading
 
-# variables usd in the plots
+# variables used in the plots
 v = ["random-patches-number", "roaming-agents", "synergy-factor", "mean-cooperators1k"]
 
 # file with data from the experiment
